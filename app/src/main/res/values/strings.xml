@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">time-control</string>
+
+
+    <string name="authorization_1">权限1</string>
+    <string name="authorization_desc_1">描述1</string>
+    <string name="authorization_2">权限2</string>
+    <string name="authorization_desc_2">描述2</string>
+    <string name="authorization_3">权限3</string>
+    <string name="authorization_desc_3">描述3</string>
+    <string name="authorization_4">权限4</string>
+    <string name="authorization_desc_4">描述4</string>
+
 </resources>

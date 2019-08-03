@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="divider">0.5dp</dimen>
+    <dimen name="double_divider">0.75dp</dimen>
+
+    <dimen name="xxsmall_padding">4dp</dimen>
+    <dimen name="xsmall_padding">8dp</dimen>
+    <dimen name="small_padding">10dp</dimen>
+    <dimen name="medium_padding">12dp</dimen>
+    <dimen name="xmedium_padding">14dp</dimen>
+    <dimen name="large_padding">16dp</dimen>
+    <dimen name="larger_padding">18dp</dimen>
+    <dimen name="xlarge_padding">20dp</dimen>
+    <dimen name="xlarger_padding">22dp</dimen>
+    <dimen name="xxlarge_padding">24dp</dimen>
+    <dimen name="xxlarger_padding">26dp</dimen>
+    <dimen name="slarge_padding">28dp</dimen>
+    <dimen name="slarger_padding">30dp</dimen>
+
+
+    <dimen name="text_size_xsmall">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_larger">18sp</dimen>
+    <dimen name="text_size_xlarge">20sp</dimen>
+
+</resources>
