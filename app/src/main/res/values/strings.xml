@@ -10,5 +10,6 @@
     <string name="authorization_desc_3">描述3</string>
     <string name="authorization_4">权限4</string>
     <string name="authorization_desc_4">描述4</string>
+    <string name="btn_next">next</string>
 
 </resources>

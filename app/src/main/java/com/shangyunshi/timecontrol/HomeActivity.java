@@ -11,8 +11,12 @@ import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -53,38 +57,46 @@ import com.google.android.material.tabs.TabLayout;
  *  成员变量 类所拥有的变量  类的任何地方使用 members
  *  局部变量 方法用的变量   该方法中使用
  *
+ * 第一行代码 Android pdf
+ * Java HeadFirst Java pdf
+ * Java ThinkingInJava
  *
  */
 public class HomeActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
-    private ViewPager2 mViewPager2;
+    private ViewPager mViewPager;
     private PagerAdapter mAdapter;
+    private ListFragment[] mFragments = new ListFragment[2];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mTabLayout = findViewById(R.id.tab_layout);
-        mViewPager2 = findViewById(R.id.view_pager);
-        mViewPager2.setAdapter(new RecyclerView.Adapter() {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return 0;
-            }
-        });
+        mViewPager = findViewById(R.id.view_pager);
+        mFragments[0] = new ListFragment();
+        mFragments[1] = new ListFragment();
+        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 
     }
 
+    //fragment -> adapter -> viewpager
+    class MyAdapter extends FragmentPagerAdapter{
+
+        public MyAdapter(@NonNull FragmentManager fm) {
+            super(fm);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments[position];
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.length;
+        }
+    }
 }
