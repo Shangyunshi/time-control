@@ -36,11 +36,12 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_auz_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <androidx.legacy.widget.Space
+    <Space
         android:layout_width="match_parent"
         android:layout_height="32dp" />
     <RelativeLayout
@@ -48,22 +49,23 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_auz_title"
+            android:id="@+id/txt_auz_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_primary"
             android:text="@string/authorization_2"/>
 
         <TextView
-            android:id="@+id/txt_auz_desc"
+            android:id="@+id/txt_auz_desc2"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_auz_title"
+            android:layout_below="@id/txt_auz_title2"
             android:textColor="@color/text_color_secondary"
             android:text="@string/authorization_desc_2"/>
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_auz_2"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
@@ -80,29 +82,30 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_auz_title"
+            android:id="@+id/txt_auz_title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_primary"
             android:text="@string/authorization_3"/>
 
         <TextView
-            android:id="@+id/txt_auz_desc"
+            android:id="@+id/txt_auz_desc3"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_auz_title"
+            android:layout_below="@id/txt_auz_title3"
             android:textColor="@color/text_color_secondary"
             android:text="@string/authorization_desc_3"/>
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_auz_3"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
-    <androidx.legacy.widget.Space
+    <Space
         android:layout_width="match_parent"
         android:layout_height="32dp" />
     <RelativeLayout
@@ -110,27 +113,46 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_auz_title"
+            android:id="@+id/txt_auz_title4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/authorization_4"
             android:textColor="@color/text_color_primary" />
 
         <TextView
-            android:id="@+id/txt_auz_desc"
+            android:id="@+id/txt_auz_desc4"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_auz_title"
+            android:layout_below="@id/txt_auz_title4"
             android:textColor="@color/text_color_secondary"
             android:text="@string/authorization_desc_4"/>
 
         <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_auz_4"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </LinearLayout>
+
+
+
 
 </LinearLayout>
