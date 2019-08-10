@@ -2,6 +2,7 @@
     <string name="app_name">Time Controller</string>
 
 
+    <!--activity + 字段名称-->
     <string name="authorization_1">权限1</string>
     <string name="authorization_desc_1">描述1</string>
     <string name="authorization_2">权限2</string>
@@ -11,5 +12,9 @@
     <string name="authorization_4">权限4</string>
     <string name="authorization_desc_4">描述4</string>
     <string name="btn_next">next</string>
+    
+    <string name="home_task_title">Task 1</string>
+    <string name="home_start_time">Start Time :</string>
+    <string name="home_ended_time">Ended Time :</string>
 
 </resources>

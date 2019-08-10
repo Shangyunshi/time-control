@@ -8,8 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListFragment extends Fragment {
+
+    private RecyclerView mRecyclerView;
+    private ListAdapter mAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,6 +26,29 @@ public class ListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list,container);
+        View v = inflater.inflate(R.layout.fragment_list,container);
+        mRecyclerView = v.findViewById(R.id.recycle_view);
+        mRecyclerView.setAdapter(new ListAdapter(test()));
+        return v;
+    }
+
+    private List<Task> test(){
+        Task task = new Task();
+
+        task.taskTitle = "Task Title";
+        task.startTime = "Start Time";
+        task.endedTime = "Ended Time";
+
+        List<Task> tasks = new ArrayList<>();
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+        tasks.add(task);
+
+        return tasks;
     }
 }

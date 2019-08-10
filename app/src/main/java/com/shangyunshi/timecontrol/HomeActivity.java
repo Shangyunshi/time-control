@@ -21,6 +21,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * public protected private
@@ -78,7 +81,6 @@ public class HomeActivity extends BaseActivity {
         mFragments[0] = new ListFragment();
         mFragments[1] = new ListFragment();
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-
     }
 
     //fragment -> adapter -> viewpager
