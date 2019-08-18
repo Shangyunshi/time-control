@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,15 +32,16 @@ public class ListFragment extends Fragment {
         mRecyclerView = v.findViewById(R.id.recycle_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(new ListAdapter(test()));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
         return v;
     }
 
     private List<Task> test(){
         Task task = new Task();
 
-        task.taskTitle = "Task Title";
-        task.startTime = "Start Time";
-        task.endedTime = "Ended Time";
+        task.taskTitle = getString(R.string.home_task_title,"test");
+        task.startTime = getString(R.string.home_start_time,"16:10");
+        task.endedTime = getString(R.string.home_ended_time,"18:10");
 
         List<Task> tasks = new ArrayList<>();
         tasks.add(task);
