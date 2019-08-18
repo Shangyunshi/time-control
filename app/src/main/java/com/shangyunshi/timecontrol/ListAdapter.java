@@ -1,6 +1,7 @@
 package com.shangyunshi.timecontrol;
 
 import android.content.ClipData;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = "ListAdapter";
+
     private List<Task> mTasks;
 
     public ListAdapter(List<Task> mTasks) {
@@ -25,7 +28,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,parent,false);
         return new ItemViewHolder(v);
     }
 
@@ -41,7 +44,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     //用户输入 -> 硬盘（数据库SQLite）-> Task -> 屏幕上
-    class ItemViewHolder extends RecyclerView.ViewHolder{
+   static class ItemViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTitle;
         TextView txtStartTime;
