@@ -1,6 +1,7 @@
 package com.shangyunshi.timecontrol;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
@@ -13,12 +14,13 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toolbar = findViewById(R.id.tool_bar);
     }
 
-    protected void setTitle(String title){
+    protected void setToolbar(String text){
+        toolbar = findViewById(R.id.tool_bar);
         if(toolbar != null){
-            toolbar.setTitle(title);
+            toolbar.setTitle(text);
         }
     }
+
 }

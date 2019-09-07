@@ -1,28 +1,15 @@
 package com.shangyunshi.timecontrol;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.FrameLayout;
-import android.widget.TableLayout;
-import android.widget.Toolbar;
-
+import android.os.PersistableBundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -76,12 +63,45 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        setTitle(getString(R.string.app_name));
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
         mFragments[0] = new ListFragment();
         mFragments[1] = new ListFragment();
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                final TabLayout.Tab tab = mTabLayout.getTabAt(position);
+                mTabLayout.selectTab(tab);
+            }
+
+            @Override public void onPageSelected(int position) {
+
+            }
+
+            @Override public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        setToolbar(getString(R.string.app_name));
     }
 
     //fragment -> adapter -> viewpager
