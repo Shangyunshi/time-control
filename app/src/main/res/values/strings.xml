@@ -16,5 +16,6 @@
     <string name="home_task_title">Task %s</string>
     <string name="home_start_time">Start Time : %s</string>
     <string name="home_ended_time">Ended Time : %s</string>
+    <string name="add_task_task_title">Task:</string>
 
 </resources>
