@@ -12,6 +12,9 @@ public class Navigation {
     private Navigation(){
     }
 
+    public static void startAddTaskActivity(Context context){
+        startActivity(context,AddTaskActivity.class);
+    }
     public static void startHomeActivity(Context context){
         startActivity(context,HomeActivity.class);
     }

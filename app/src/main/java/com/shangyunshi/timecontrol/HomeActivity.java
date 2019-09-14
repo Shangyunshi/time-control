@@ -1,15 +1,18 @@
 package com.shangyunshi.timecontrol;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.shangyunshi.timecontrol.db.TaskDao;
 
 /**
  *
@@ -56,8 +59,10 @@ public class HomeActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private FloatingActionButton mFabBtn;
     private PagerAdapter mAdapter;
     private ListFragment[] mFragments = new ListFragment[2];
+    private TaskDao mTaskDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +70,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
+        mFabBtn = findViewById(R.id.fab);
         mFragments[0] = new ListFragment();
         mFragments[1] = new ListFragment();
         mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
@@ -96,12 +102,16 @@ public class HomeActivity extends BaseActivity {
 
             }
         });
+        mFabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Navigation.startAddTaskActivity(HomeActivity.this);
+            }
+        });
     }
 
-    @Override
-    public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
-        setToolbar(getString(R.string.app_name));
+    @Override protected void onSetupToolbar(Toolbar toolbar) {
+        super.onSetupToolbar(toolbar);
+        toolbar.setTitle(getString(R.string.app_name));
     }
 
     //fragment -> adapter -> viewpager
