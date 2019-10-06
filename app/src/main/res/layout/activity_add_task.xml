@@ -1,83 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:showDividers="middle"
+    android:divider="@drawable/divider"
     android:orientation="vertical">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="64dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.loopeer.formitemview.FormEditItem
+        style="@style/FormItemViewStyle.FormEditItem"
+        app:contentGravity="start"
+        app:contentTextSize="17sp"
+        app:descTextSize="17sp"
+        app:contentMaxLength="12"
+        app:contentHint="@string/add_task_task_title"
+        app:descDrawableLeft="@drawable/ic_task_title_36dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_task_task_title"/>
+    <com.loopeer.formitemview.FormTextItem
+        style="@style/FormItemViewStyle.FormTextItem"
+        android:id="@+id/item_start_time"
+        app:contentHint="@string/add_task_task_start_time"
+        app:descTextSize="17sp"
+        app:descDrawableLeft="@drawable/ic_task_time_start_36dp"
+        android:onClick="onItemStartTimeClick"/>
 
-        <EditText
-            android:id="@+id/et_task_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+    <com.loopeer.formitemview.FormTextItem
+        style="@style/FormItemViewStyle.FormTextItem"
+        app:contentHint="@string/add_task_task_end_time"
+        android:id="@+id/item_end_time"
+        app:descTextSize="17sp"
+        app:descDrawableLeft="@drawable/ic_task_time_end_36dp"
+        android:onClick="onItemEndTimeClick"/>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="32dp"/>
+    <com.loopeer.formitemview.FormEditItem
+        style="@style/FormItemViewStyle.FormTextItem"
+        android:id="@+id/item_address"
+        app:contentHint="@string/add_task_task_address"
+        app:contentGravity="start"
+        app:contentTextSize="17sp"
+        app:descTextSize="17sp"
+        app:contentMaxLength="12"
+        app:descDrawableLeft="@drawable/ic_task_address_36dp"
+        android:onClick="onItemAddressClick"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.loopeer.formitemview.FormTextItem
+        style="@style/FormItemViewStyle.FormTextItem"
+        android:id="@+id/item_white_list"
+        app:contentHint="@string/add_task_task_white_list"
+        app:descTextSize="17sp"
+        app:descDrawableLeft="@drawable/ic_task_white_list_36dp"
+        android:onClick="onItemWhiteListClick"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_task_task_title"/>
-
-        <EditText
-            android:id="@+id/et_task_start_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="32dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_task_task_title"/>
-
-        <EditText
-            android:id="@+id/et_ended_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="32dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_task_task_title"/>
-
-        <EditText
-            android:id="@+id/et_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_gravity="center_horizontal"
+        android:text="ADD TASK"/>
 
 </LinearLayout>

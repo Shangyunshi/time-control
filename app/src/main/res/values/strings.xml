@@ -16,6 +16,11 @@
     <string name="home_task_title">Task %s</string>
     <string name="home_start_time">Start Time : %s</string>
     <string name="home_ended_time">Ended Time : %s</string>
-    <string name="add_task_task_title">Task:</string>
+    <string name="add_task_task_title">Task Title</string>
+    <string name="add_task_task_start_time">Start Time</string>
+    <string name="add_task_task_end_time">End Time</string>
+    <string name="add_task_task_address">Address</string>
+    <string name="add_task_task_white_list">White List</string>
+    <string name="label_add_task">AddTask</string>
 
 </resources>

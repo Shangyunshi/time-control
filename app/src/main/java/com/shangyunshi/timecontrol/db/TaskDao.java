@@ -46,7 +46,7 @@ public class TaskDao {
             contentValues.put("title", task.taskTitle);
             contentValues.put("startTime", task.startTime);
             contentValues.put("endTime", task.endedTime);
-            contentValues.put("address", task.address);
+            contentValues.put("address", task.location);
             contentValues.put("role", task.role);
             contentValues.put("whiteList", task.whiteList);
 
@@ -77,7 +77,7 @@ public class TaskDao {
             contentValues.put("title", task.taskTitle);
             contentValues.put("startTime", task.startTime);
             contentValues.put("endTime", task.endedTime);
-            contentValues.put("address", task.address);
+            contentValues.put("address", task.location);
             contentValues.put("role", task.role);
             contentValues.put("whiteList", task.whiteList);
             db.update(DbHelper.TASKTABLE_NAME, contentValues, "id=?",
@@ -119,7 +119,7 @@ public class TaskDao {
                     task.taskTitle = cursor.getString(cursor.getColumnIndex("title"));
                     task.startTime = cursor.getString(cursor.getColumnIndex("startTime"));
                     task.endedTime = cursor.getString(cursor.getColumnIndex("endedTime"));
-                    task.address = cursor.getString(cursor.getColumnIndex("address"));
+                    task.location = cursor.getString(cursor.getColumnIndex("address"));
                     task.role = cursor.getString(cursor.getColumnIndex("role"));
                     task.whiteList = cursor.getString(cursor.getColumnIndex("whiteList"));
                     tasks.add(task);

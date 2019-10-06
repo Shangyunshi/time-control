@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.shangyunshi.timecontrol">
+
+    <!--使用记录访问权限-->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions"/>
+
+    <!--WRITE_SETTINGS-->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions"/>
+
+    <!--系统弹窗-->
+    <!--<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>-->
+
+    <!--通知使用权-->
+    <!--android.service.notification.NotificationListenerService-->
+
+
 
     <application
         android:allowBackup="true"
@@ -14,14 +33,15 @@
 
         </activity>
 
-        <activity android:name=".AuthorizationManagementActivity" >
+        <activity android:name=".AuthorizationManagementActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"
+        <activity
+            android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
