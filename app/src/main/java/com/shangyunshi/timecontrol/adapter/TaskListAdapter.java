@@ -1,4 +1,4 @@
-package com.shangyunshi.timecontrol;
+package com.shangyunshi.timecontrol.adapter;
 
 import android.content.ClipData;
 import android.util.Log;
@@ -10,18 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shangyunshi.timecontrol.R;
+import com.shangyunshi.timecontrol.Task;
 import java.util.List;
 
 //fragment -> adapter -> viewpager
 //item -> adapter -> recyclerView
 
-public class ListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TaskListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "ListAdapter";
 
     private List<Task> mTasks;
 
-    public ListAdapter(List<Task> mTasks) {
+    public TaskListAdapter(List<Task> mTasks) {
         this.mTasks = mTasks;
     }
 

@@ -14,12 +14,10 @@
         tools:ignore="ProtectedPermissions"/>
 
     <!--系统弹窗-->
-    <!--<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <!--通知使用权-->
     <!--android.service.notification.NotificationListenerService-->
-
-
 
     <application
         android:allowBackup="true"
@@ -27,7 +25,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".TimeControlApp">
 
         <activity android:name=".MainActivity">
 
@@ -46,6 +45,9 @@
 
         </activity>
         <activity android:name=".AddTaskActivity"/>
+        <activity android:name=".AppInfoListActivity"/>
+        <activity android:name=".AddLabelActivity"/>
+        <activity android:name=".LabelListActivity"/>
 
     </application>
 

@@ -13,6 +13,7 @@
 
     <com.loopeer.formitemview.FormEditItem
         style="@style/FormItemViewStyle.FormEditItem"
+        android:id="@+id/item_task_title"
         app:contentGravity="start"
         app:contentTextSize="17sp"
         app:descTextSize="17sp"
@@ -60,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:layout_gravity="center_horizontal"
-        android:text="ADD TASK"/>
+        android:text="ADD TASK"
+        android:onClick="onAddTaskClick"/>
 
 </LinearLayout>

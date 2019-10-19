@@ -9,20 +9,28 @@ import android.content.Intent;
 //3. git push 本地仓库——远程仓库
 public class Navigation {
 
-    private Navigation(){
+    private Navigation() {
     }
 
-    public static void startAddTaskActivity(Context context){
-        startActivity(context,AddTaskActivity.class);
+    public static void startAddTaskActivity(Context context) {
+        startActivity(context, AddTaskActivity.class);
     }
-    public static void startHomeActivity(Context context){
-        startActivity(context,HomeActivity.class);
+
+    public static void startHomeActivity(Context context) {
+        startActivity(context, HomeActivity.class);
     }
 
     //AuzActivity -> HomeActivity
-    private static void startActivity(Context context,Class clz){
-        Intent intent = new Intent(context,clz);
+    private static void startActivity(Context context, Class clz) {
+        Intent intent = new Intent(context, clz);
         context.startActivity(intent);
     }
 
+    public static void startAppInfoListActivity(Context context) {
+        startActivity(context, AppInfoListActivity.class);
+    }
+
+    public static void startLabelListActivity(Context context) {
+        startActivity(context,LabelListActivity.class);
+    }
 }

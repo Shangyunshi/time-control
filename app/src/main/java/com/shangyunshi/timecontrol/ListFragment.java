@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shangyunshi.timecontrol.adapter.TaskListAdapter;
 import com.shangyunshi.timecontrol.db.TaskDao;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private ListAdapter mAdapter;
+    private TaskListAdapter mAdapter;
     private TaskDao mTaskDao;
 
     @Override
@@ -34,7 +35,7 @@ public class ListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_list,container,false);
         mRecyclerView = v.findViewById(R.id.recycle_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new ListAdapter(test()));
+        mRecyclerView.setAdapter(new TaskListAdapter(test()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
         return v;
     }

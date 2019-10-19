@@ -1,11 +1,21 @@
 package com.shangyunshi.timecontrol;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import com.afollestad.materialdialogs.DialogBehavior;
+import com.afollestad.materialdialogs.MaterialDialog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //1.绘制权限界面
 //2.java 关键字
@@ -34,5 +44,17 @@ public class AuthorizationManagementActivity extends AppCompatActivity {
             }
         });
 
+        // AlertDialog dialog = new AlertDialog.Builder(this)
+        //     .setTitle("XXXX")
+        //     .setMessage("XXXXXXXXXXXXXXXXXX")
+        //     .create();
+        //
+        // dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        // dialog.setCanceledOnTouchOutside(false);//点击屏幕不消失
+        //
+        // dialog.show();
+
     }
+
+
 }

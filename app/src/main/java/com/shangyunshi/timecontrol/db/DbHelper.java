@@ -16,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DbHelper extends SQLiteOpenHelper {
 	private static final int DB_VERSION = 1;
-	private static final String DB_NAME = "employclent.db";
+	private static final String DB_NAME = "task.db";
 	public static final String TASKTABLE_NAME = "t_task";
 
 	public DbHelper(Context context) {
