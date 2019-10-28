@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
-import com.shangyunshi.timecontrol.Task;
+import com.shangyunshi.timecontrol.model.Task;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -23,11 +23,11 @@ public class TaskDao {
         "address", "role", "whiteList" };
 
     private Context mContext;
-    private DbHelper mUserDBHelper;
+    private DBHelper mUserDBHelper;
 
     public TaskDao(Context context) {
         this.mContext = context;
-        mUserDBHelper = new DbHelper(context);
+        mUserDBHelper = DBHelper.getInstance();
     }
 
     /**
@@ -48,9 +48,9 @@ public class TaskDao {
             contentValues.put("endTime", task.endedTime);
             contentValues.put("address", task.location);
             contentValues.put("role", task.role);
-            contentValues.put("whiteList", task.whiteList);
+            //contentValues.put("whiteList", task.whiteList);
 
-            db.insertOrThrow(DbHelper.TASKTABLE_NAME, null, contentValues);
+            db.insertOrThrow(DBHelper.TASK_TABLE_NAME, null, contentValues);
 
             db.setTransactionSuccessful();
             return true;
@@ -79,8 +79,8 @@ public class TaskDao {
             contentValues.put("endTime", task.endedTime);
             contentValues.put("address", task.location);
             contentValues.put("role", task.role);
-            contentValues.put("whiteList", task.whiteList);
-            db.update(DbHelper.TASKTABLE_NAME, contentValues, "id=?",
+            //contentValues.put("whiteList", task.whiteList);
+            db.update(DBHelper.TASK_TABLE_NAME, contentValues, "id=?",
                 new String[] { task.id });
             db.setTransactionSuccessful();
             return true;
@@ -109,7 +109,7 @@ public class TaskDao {
         try {
             db = mUserDBHelper.getReadableDatabase();
             String[] args = new String[] { title };
-            cursor = db.query(DbHelper.TASKTABLE_NAME, KEYS_COLUMNS, "title=?", args,
+            cursor = db.query(DBHelper.TASK_TABLE_NAME, KEYS_COLUMNS, "title=?", args,
                 null, null, null);
 
             if (cursor.getCount() > 0) {
@@ -121,7 +121,7 @@ public class TaskDao {
                     task.endedTime = cursor.getString(cursor.getColumnIndex("endedTime"));
                     task.location = cursor.getString(cursor.getColumnIndex("address"));
                     task.role = cursor.getString(cursor.getColumnIndex("role"));
-                    task.whiteList = cursor.getString(cursor.getColumnIndex("whiteList"));
+                    //task.whiteList = cursor.getString(cursor.getColumnIndex("whiteList"));
                     tasks.add(task);
                 }
                 return tasks;
@@ -150,7 +150,7 @@ public class TaskDao {
             db = mUserDBHelper.getWritableDatabase();
             db.beginTransaction();
             String[] selectargs = new String[] { id };
-            db.delete(DbHelper.TASKTABLE_NAME, " id=? ", selectargs);
+            db.delete(DBHelper.TASK_TABLE_NAME, " id=? ", selectargs);
             db.setTransactionSuccessful();
             return true;
         } catch (Exception e) {

@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.shangyunshi.timecontrol.AppInfo;
+import com.shangyunshi.timecontrol.model.AppInfo;
 import com.shangyunshi.timecontrol.R;
 import java.util.List;
 

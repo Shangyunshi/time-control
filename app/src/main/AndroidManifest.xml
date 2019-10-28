@@ -39,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -47,7 +48,9 @@
         <activity android:name=".AddTaskActivity"/>
         <activity android:name=".AppInfoListActivity"/>
         <activity android:name=".AddLabelActivity"/>
-        <activity android:name=".LabelListActivity"/>
+        <activity android:name=".LabelListActivity">
+
+        </activity>
 
     </application>
 

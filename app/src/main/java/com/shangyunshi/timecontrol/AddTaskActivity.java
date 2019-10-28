@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.loopeer.formitemview.FormEditItem;
 import com.loopeer.formitemview.FormTextItem;
 import com.shangyunshi.timecontrol.db.TaskDao;
+import com.shangyunshi.timecontrol.model.Task;
 
 public class AddTaskActivity extends BaseActivity {
 
@@ -68,7 +69,7 @@ public class AddTaskActivity extends BaseActivity {
         task.startTime = mItemStartTime.getContentText();
         task.endedTime = mItemEndTime.getContentText();
         task.location = mItemAddress.getContentText();
-        task.whiteList = mItemWhiteList.getContentText();
+        //task.whiteList = mItemWhiteList.getContentText();
         mTaskDao.insertTask(task);
     }
 }

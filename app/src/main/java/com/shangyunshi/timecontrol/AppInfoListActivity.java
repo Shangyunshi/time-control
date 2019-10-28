@@ -4,11 +4,14 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.shangyunshi.timecontrol.adapter.AppInfoListAdapter;
+import com.shangyunshi.timecontrol.model.AppInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +34,11 @@ public class AppInfoListActivity extends BaseActivity {
         return true;
     }
 
-    @Override public void onOptionsMenuClosed(Menu menu) {
-        super.onOptionsMenuClosed(menu);
-        Navigation.startLabelListActivity(this);
+    @Override public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_label) {
+            Navigation.startLabelListActivity(this);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private List<AppInfo> getPackageInfo() {

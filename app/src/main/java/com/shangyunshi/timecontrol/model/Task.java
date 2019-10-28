@@ -1,4 +1,6 @@
-package com.shangyunshi.timecontrol;
+package com.shangyunshi.timecontrol.model;
+
+import java.util.List;
 
 public class Task {
 
@@ -8,5 +10,5 @@ public class Task {
     public String endedTime;
     public String location;
     public String role;
-    public String whiteList;
+    public List<Label> whiteList;
 }

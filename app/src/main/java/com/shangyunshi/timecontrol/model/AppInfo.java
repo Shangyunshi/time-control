@@ -1,4 +1,4 @@
-package com.shangyunshi.timecontrol;
+package com.shangyunshi.timecontrol.model;
 
 import android.graphics.drawable.Drawable;
 

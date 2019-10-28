@@ -4,12 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/large_padding"
-    android:paddingRight="@dimen/large_padding"
     android:paddingTop="@dimen/medium_padding">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
+        android:id="@+id/searview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
@@ -17,6 +15,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
+        android:paddingLeft="@dimen/large_padding"
+        android:paddingRight="@dimen/large_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -1,7 +1,5 @@
 package com.shangyunshi.timecontrol.adapter;
 
-import android.content.ClipData;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shangyunshi.timecontrol.R;
-import com.shangyunshi.timecontrol.Task;
+import com.shangyunshi.timecontrol.model.Task;
 import java.util.List;
 
 //fragment -> adapter -> viewpager
@@ -30,7 +28,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task_list,parent,false);
         return new ItemViewHolder(v);
     }
 
