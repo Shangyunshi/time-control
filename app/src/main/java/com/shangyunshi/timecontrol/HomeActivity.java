@@ -1,5 +1,6 @@
 package com.shangyunshi.timecontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.annotation.NonNull;
@@ -73,7 +74,7 @@ public class HomeActivity extends BaseActivity {
         mFabBtn = findViewById(R.id.fab);
         mFragments[0] = new ListFragment();
         mFragments[1] = new ListFragment();
-        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(mAdapter = new MyAdapter(getSupportFragmentManager()));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
@@ -104,7 +105,7 @@ public class HomeActivity extends BaseActivity {
         });
         mFabBtn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Navigation.startAddTaskActivity(HomeActivity.this);
+                Navigation.startAddTaskActivityForResult(HomeActivity.this);
             }
         });
     }
@@ -131,5 +132,16 @@ public class HomeActivity extends BaseActivity {
         public int getCount() {
             return mFragments.length;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 10003){
+            if(resultCode == RESULT_OK){
+                mAdapter = new MyAdapter(getSupportFragmentManager()) ;
+                mViewPager.setAdapter(mAdapter);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

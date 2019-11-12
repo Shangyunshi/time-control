@@ -1,5 +1,6 @@
 package com.shangyunshi.timecontrol;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -12,8 +13,9 @@ public class Navigation {
     private Navigation() {
     }
 
-    public static void startAddTaskActivity(Context context) {
-        startActivity(context, AddTaskActivity.class);
+    public static void startAddTaskActivityForResult(HomeActivity activity) {
+        Intent intent = new Intent(activity,AddTaskActivity.class);
+        activity.startActivityForResult(intent,10003);
     }
 
     public static void startHomeActivity(Context context) {
@@ -26,11 +28,13 @@ public class Navigation {
         context.startActivity(intent);
     }
 
-    public static void startAppInfoListActivity(Context context) {
-        startActivity(context, AppInfoListActivity.class);
+    public static void startLabelListActivityForResult(AddTaskActivity activity) {
+        Intent intent = new Intent(activity, LabelListActivity.class);
+        activity.startActivityForResult(intent,10002);
     }
 
-    public static void startLabelListActivity(Context context) {
-        startActivity(context,LabelListActivity.class);
+    public static void startAppListActivityForResult(LabelListActivity activity) {
+        Intent intent = new Intent(activity, AppListActivity.class);
+        activity.startActivityForResult(intent,10001);
     }
 }

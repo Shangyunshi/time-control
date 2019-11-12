@@ -35,30 +35,31 @@ public class ListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_list,container,false);
         mRecyclerView = v.findViewById(R.id.recycle_view);
+        mAdapter = new TaskListAdapter(mTaskDao.getAllTasks());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new TaskListAdapter(test()));
+        mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
         return v;
     }
 
-    private List<Task> test(){
-        Task task = new Task();
-
-        task.taskTitle = getString(R.string.home_task_title,"test");
-        task.startTime = getString(R.string.home_start_time,"16:10");
-        task.endedTime = getString(R.string.home_ended_time,"18:10");
-
-        mTaskDao.insertTask(task);
-        List<Task> tasks = new ArrayList<>();
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-        tasks.add(task);
-
-        return tasks;
-    }
+    // private List<Task> test(){
+    //     Task task = new Task();
+    //
+    //     task.taskTitle = getString(R.string.home_task_title,"test");
+    //     task.startTime = getString(R.string.home_start_time,"16:10");
+    //     task.endedTime = getString(R.string.home_ended_time,"18:10");
+    //
+    //     mTaskDao.insertTask(task);
+    //     List<Task> tasks = new ArrayList<>();
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //     tasks.add(task);
+    //
+    //     return tasks;
+    // }
 }

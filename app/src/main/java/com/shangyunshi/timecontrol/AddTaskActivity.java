@@ -2,15 +2,20 @@ package com.shangyunshi.timecontrol;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import com.loopeer.formitemview.FormEditItem;
 import com.loopeer.formitemview.FormTextItem;
 import com.shangyunshi.timecontrol.db.TaskDao;
+import com.shangyunshi.timecontrol.model.Label;
 import com.shangyunshi.timecontrol.model.Task;
+import com.shangyunshi.timecontrol.utils.StringUtils;
+import java.util.ArrayList;
 
 public class AddTaskActivity extends BaseActivity {
 
@@ -21,6 +26,8 @@ public class AddTaskActivity extends BaseActivity {
     FormTextItem mItemWhiteList;
 
     TaskDao mTaskDao;
+
+    Label mLabel;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +67,7 @@ public class AddTaskActivity extends BaseActivity {
     }
 
     public void onItemWhiteListClick(View v) {
-        Navigation.startAppInfoListActivity(this);
+        Navigation.startLabelListActivityForResult(this);
     }
 
     public void onAddTaskClick(View v) {
@@ -69,7 +76,23 @@ public class AddTaskActivity extends BaseActivity {
         task.startTime = mItemStartTime.getContentText();
         task.endedTime = mItemEndTime.getContentText();
         task.location = mItemAddress.getContentText();
-        //task.whiteList = mItemWhiteList.getContentText();
+        task.labelId = mLabel.id;
         mTaskDao.insertTask(task);
+        Toast.makeText(this,"add task success!",Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 10002) {
+            if (resultCode == RESULT_OK) {
+                mLabel = (Label) data.getSerializableExtra("label");
+                if (mLabel != null) {
+                    mItemWhiteList.setContentText(mLabel.name);
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

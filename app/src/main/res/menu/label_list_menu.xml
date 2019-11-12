@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_search"
-        android:title="搜索"
-        app:actionViewClass="android.widget.SearchView"
+        android:id="@+id/menu_label_confirm"
+        android:icon="@drawable/ic_check_24dp"
+        android:title="确认"
         app:showAsAction="ifRoom" />
 
 </menu>

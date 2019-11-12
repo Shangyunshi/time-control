@@ -23,7 +23,6 @@ public class LabelDao {
     private Context mContext;
     private DBHelper mUserDBHelper;
 
-
     public LabelDao(Context context) {
         this.mContext = context;
         mUserDBHelper = DBHelper.getInstance();
@@ -63,8 +62,8 @@ public class LabelDao {
      * 查询 title
      */
 
-    public List<Label> getAllLabels() {
-        List<Label> labels = new ArrayList<>();
+    public ArrayList<Label> getAllLabels() {
+        ArrayList<Label> labels = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor = null;
 
@@ -94,6 +93,39 @@ public class LabelDao {
         }
 
         return labels;
+    }
+
+    public Label getLabelById(String id) {
+        Label label = null;
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+
+        try {
+            db = mUserDBHelper.getReadableDatabase();
+            String[] args = new String[] { id };
+            cursor = db.query(DBHelper.LABEL_TABLE_NAME, KEYS_COLUMNS, "id=? ", args,
+                null, null, null);
+
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    label = new Label();
+                    label.id = cursor.getString(cursor.getColumnIndex("id"));
+                    label.name = cursor.getString(cursor.getColumnIndex("name"));
+                }
+                return label;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "error: ", e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return label;
     }
 
     /**

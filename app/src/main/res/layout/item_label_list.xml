@@ -4,11 +4,14 @@
     android:layout_height="48dp"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatCheckedTextView
         android:id="@+id/txt_label_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:textColor="@color/text_color_primary"
         android:textSize="18sp"/>
+
 </FrameLayout>

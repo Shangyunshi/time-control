@@ -48,7 +48,7 @@ public class TaskDao {
             contentValues.put("endTime", task.endedTime);
             contentValues.put("address", task.location);
             contentValues.put("role", task.role);
-            //contentValues.put("whiteList", task.whiteList);
+            contentValues.put("whiteList", task.labelId);
 
             db.insertOrThrow(DBHelper.TASK_TABLE_NAME, null, contentValues);
 
@@ -101,15 +101,15 @@ public class TaskDao {
      * 查询 title
      */
 
-    public List<Task> getTaskByTitle(String title) {
+    public List<Task> getAllTasks() {
         List<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor = null;
+        LabelDao labelDao = new LabelDao(mContext);
 
         try {
             db = mUserDBHelper.getReadableDatabase();
-            String[] args = new String[] { title };
-            cursor = db.query(DBHelper.TASK_TABLE_NAME, KEYS_COLUMNS, "title=?", args,
+            cursor = db.query(DBHelper.TASK_TABLE_NAME, KEYS_COLUMNS, "", null,
                 null, null, null);
 
             if (cursor.getCount() > 0) {
@@ -118,16 +118,16 @@ public class TaskDao {
                     task.id = cursor.getString(cursor.getColumnIndex("id"));
                     task.taskTitle = cursor.getString(cursor.getColumnIndex("title"));
                     task.startTime = cursor.getString(cursor.getColumnIndex("startTime"));
-                    task.endedTime = cursor.getString(cursor.getColumnIndex("endedTime"));
+                    task.endedTime = cursor.getString(cursor.getColumnIndex("endTime"));
                     task.location = cursor.getString(cursor.getColumnIndex("address"));
                     task.role = cursor.getString(cursor.getColumnIndex("role"));
-                    //task.whiteList = cursor.getString(cursor.getColumnIndex("whiteList"));
+                    task.labelId = cursor.getString(cursor.getColumnIndex("whiteList"));
                     tasks.add(task);
                 }
                 return tasks;
             }
         } catch (Exception e) {
-            Log.e(TAG, "", e);
+            Log.e(TAG, "error:", e);
         } finally {
             if (cursor != null) {
                 cursor.close();
