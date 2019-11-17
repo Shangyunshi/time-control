@@ -1,8 +1,14 @@
 package com.shangyunshi.timecontrol;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -14,30 +20,30 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.shangyunshi.timecontrol.db.TaskDao;
+import java.util.Calendar;
 
 /**
- *
  * public protected private
  *
  * class Person{
- *     protected eyes;
- *     private nose;
+ * protected eyes;
+ * private nose;
  *
- *      walk(){ leg.walk()}
+ * walk(){ leg.walk()}
  *
  * }
  *
  * class Man extends Person{
- *     protected eyes;
+ * protected eyes;
  *
- *     walk(){ super.walk(); rest()}
+ * walk(){ super.walk(); rest()}
  * }
  *
  * int add(int a,int b){ return a + b}
  *
  * Activity onCreate() onStart() onRestart() onResume() onPause() onStop() onDestroy()
  *
- *                  toolbar
+ * toolbar
  * HomeActivity -> BaseActivity -> AppCompatActivity
  * Act1 Act2
  *
@@ -48,13 +54,12 @@ import com.shangyunshi.timecontrol.db.TaskDao;
  *
  *
  * Java 变量
- *  成员变量 类所拥有的变量  类的任何地方使用 members
- *  局部变量 方法用的变量   该方法中使用
+ * 成员变量 类所拥有的变量  类的任何地方使用 members
+ * 局部变量 方法用的变量   该方法中使用
  *
  * 第一行代码 Android pdf
  * Java HeadFirst Java pdf
  * Java ThinkingInJava
- *
  */
 public class HomeActivity extends BaseActivity {
 
@@ -64,6 +69,7 @@ public class HomeActivity extends BaseActivity {
     private PagerAdapter mAdapter;
     private ListFragment[] mFragments = new ListFragment[2];
     private TaskDao mTaskDao;
+    private DatePickerDialog mDatePicker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,7 +114,47 @@ public class HomeActivity extends BaseActivity {
                 Navigation.startAddTaskActivityForResult(HomeActivity.this);
             }
         });
+
+        initDatePickerDialog();
     }
+
+    @Override public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.home_calendar) {
+           if(mDatePicker != null){
+               mDatePicker.show();
+           }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void initDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        mDatePicker = new DatePickerDialog(this,
+            new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                    Calendar choosedCalendar = Calendar.getInstance();
+                    choosedCalendar.set(year, month, dayOfMonth);
+                    if (calendar.compareTo(choosedCalendar) < 0) {
+                        Toast.makeText(HomeActivity.this, "please choose a past day",
+                            Toast.LENGTH_SHORT).show();
+                    }else {
+                        Navigation.startTaskActivity(HomeActivity.this);
+                    }
+                }
+            },
+            year, month, day);
+    }
+
 
     @Override protected void onSetupToolbar(Toolbar toolbar) {
         super.onSetupToolbar(toolbar);
@@ -116,7 +162,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     //fragment -> adapter -> viewpager
-    class MyAdapter extends FragmentPagerAdapter{
+    class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(@NonNull FragmentManager fm) {
             super(fm);
@@ -136,9 +182,9 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == 10003){
-            if(resultCode == RESULT_OK){
-                mAdapter = new MyAdapter(getSupportFragmentManager()) ;
+        if (requestCode == 10003) {
+            if (resultCode == RESULT_OK) {
+                mAdapter = new MyAdapter(getSupportFragmentManager());
                 mViewPager.setAdapter(mAdapter);
             }
         }

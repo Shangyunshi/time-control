@@ -51,6 +51,7 @@
         <activity android:name=".AppListActivity">
 
         </activity>
+        <activity android:name=".TaskActivity"/>
 
     </application>
 

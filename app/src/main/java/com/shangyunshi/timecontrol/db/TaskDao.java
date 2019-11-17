@@ -105,7 +105,6 @@ public class TaskDao {
         List<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor = null;
-        LabelDao labelDao = new LabelDao(mContext);
 
         try {
             db = mUserDBHelper.getReadableDatabase();
@@ -140,6 +139,43 @@ public class TaskDao {
         return tasks;
     }
 
+    public List<Task> getTasksByDate(){
+        List<Task> tasks = new ArrayList<>();
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+
+        try {
+            db = mUserDBHelper.getReadableDatabase();
+            cursor = db.query(DBHelper.TASK_TABLE_NAME, KEYS_COLUMNS, "startTime=?", null,
+                null, null, null);
+
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Task task = new Task();
+                    task.id = cursor.getString(cursor.getColumnIndex("id"));
+                    task.taskTitle = cursor.getString(cursor.getColumnIndex("title"));
+                    task.startTime = cursor.getString(cursor.getColumnIndex("startTime"));
+                    task.endedTime = cursor.getString(cursor.getColumnIndex("endTime"));
+                    task.location = cursor.getString(cursor.getColumnIndex("address"));
+                    task.role = cursor.getString(cursor.getColumnIndex("role"));
+                    task.labelId = cursor.getString(cursor.getColumnIndex("whiteList"));
+                    tasks.add(task);
+                }
+                return tasks;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "error:", e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return tasks;
+    }
     /**
      * 删除Task
      */

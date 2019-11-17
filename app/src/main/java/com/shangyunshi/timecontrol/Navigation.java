@@ -1,6 +1,5 @@
 package com.shangyunshi.timecontrol;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -36,5 +35,9 @@ public class Navigation {
     public static void startAppListActivityForResult(LabelListActivity activity) {
         Intent intent = new Intent(activity, AppListActivity.class);
         activity.startActivityForResult(intent,10001);
+    }
+
+    public static void startTaskActivity(Context context) {
+        startActivity(context,TaskActivity.class);
     }
 }

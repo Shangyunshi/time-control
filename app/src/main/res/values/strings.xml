@@ -22,5 +22,6 @@
     <string name="add_task_task_address">Address</string>
     <string name="add_task_task_white_list">White List</string>
     <string name="label_add_task">AddTask</string>
+    <string name="label_task">History Tasks</string>
 
 </resources>
