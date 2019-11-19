@@ -139,15 +139,21 @@ public class TaskDao {
         return tasks;
     }
 
-    public List<Task> getTasksByDate(){
+    public List<Task> getTasksByDate(String date) {
         List<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor = null;
 
         try {
             db = mUserDBHelper.getReadableDatabase();
-            cursor = db.query(DBHelper.TASK_TABLE_NAME, KEYS_COLUMNS, "startTime=?", null,
-                null, null, null);
+            cursor = db.query(
+                    DBHelper.TASK_TABLE_NAME,
+                KEYS_COLUMNS,
+                KEYS_COLUMNS[2] + " LIKE ?",
+                new String[]{"%" + date + "%"},
+                null,
+                null,
+                null);
 
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
@@ -176,6 +182,7 @@ public class TaskDao {
 
         return tasks;
     }
+
     /**
      * 删除Task
      */

@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.shangyunshi.timecontrol.db.TaskDao;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -68,13 +70,18 @@ public class HomeActivity extends BaseActivity {
     private FloatingActionButton mFabBtn;
     private PagerAdapter mAdapter;
     private ListFragment[] mFragments = new ListFragment[2];
-    private TaskDao mTaskDao;
     private DatePickerDialog mDatePicker;
+    
+    private SimpleDateFormat mTextFormat;
+    private SimpleDateFormat mDayFormat;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        mTextFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        mDayFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
         mFabBtn = findViewById(R.id.fab);
@@ -125,19 +132,19 @@ public class HomeActivity extends BaseActivity {
 
     @Override public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.home_calendar) {
-           if(mDatePicker != null){
-               mDatePicker.show();
-           }
+            if (mDatePicker != null) {
+                mDatePicker.show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     private void initDatePickerDialog() {
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        calendar.set(year, month, day, 24, 0, 0);
         mDatePicker = new DatePickerDialog(this,
             new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -147,14 +154,14 @@ public class HomeActivity extends BaseActivity {
                     if (calendar.compareTo(choosedCalendar) < 0) {
                         Toast.makeText(HomeActivity.this, "please choose a past day",
                             Toast.LENGTH_SHORT).show();
-                    }else {
-                        Navigation.startTaskActivity(HomeActivity.this);
+                    } else {
+                        final String date = mDayFormat.format(choosedCalendar.getTime());
+                        Navigation.startTaskActivity(HomeActivity.this, date);
                     }
                 }
             },
             year, month, day);
     }
-
 
     @Override protected void onSetupToolbar(Toolbar toolbar) {
         super.onSetupToolbar(toolbar);

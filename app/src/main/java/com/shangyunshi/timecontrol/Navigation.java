@@ -13,8 +13,8 @@ public class Navigation {
     }
 
     public static void startAddTaskActivityForResult(HomeActivity activity) {
-        Intent intent = new Intent(activity,AddTaskActivity.class);
-        activity.startActivityForResult(intent,10003);
+        Intent intent = new Intent(activity, AddTaskActivity.class);
+        activity.startActivityForResult(intent, 10003);
     }
 
     public static void startHomeActivity(Context context) {
@@ -29,15 +29,17 @@ public class Navigation {
 
     public static void startLabelListActivityForResult(AddTaskActivity activity) {
         Intent intent = new Intent(activity, LabelListActivity.class);
-        activity.startActivityForResult(intent,10002);
+        activity.startActivityForResult(intent, 10002);
     }
 
     public static void startAppListActivityForResult(LabelListActivity activity) {
         Intent intent = new Intent(activity, AppListActivity.class);
-        activity.startActivityForResult(intent,10001);
+        activity.startActivityForResult(intent, 10001);
     }
 
-    public static void startTaskActivity(Context context) {
-        startActivity(context,TaskActivity.class);
+    public static void startTaskActivity(Context context, String date) {
+        Intent intent = new Intent(context, TaskActivity.class);
+        intent.putExtra("task_date", date);
+        context.startActivity(intent);
     }
 }

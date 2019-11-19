@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 import com.shangyunshi.timecontrol.model.Label;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class LabelDao {
