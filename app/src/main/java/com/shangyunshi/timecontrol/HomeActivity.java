@@ -88,19 +88,6 @@ public class HomeActivity extends BaseActivity {
         mFragments[0] = new ListFragment();
         mFragments[1] = new ListFragment();
         mViewPager.setAdapter(mAdapter = new MyAdapter(getSupportFragmentManager()));
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override public void onTabSelected(TabLayout.Tab tab) {
-                mViewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

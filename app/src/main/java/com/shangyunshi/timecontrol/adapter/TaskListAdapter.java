@@ -41,7 +41,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final Task task = mTasks.get(position);
         Context context = holder.itemView.getContext();
-        ((ItemViewHolder) holder).bind(context,task);
+        ((ItemViewHolder) holder).bind(context, task);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 if (mOnItemClickListener != null) {
@@ -49,6 +49,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }
         });
+    }
+
+    public List<Task> getTasks() {
+        return mTasks;
     }
 
     @Override
@@ -71,9 +75,9 @@ public class TaskListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         public void bind(Context context, Task task) {
-            txtTitle.setText(context.getString(R.string.home_task_title,task.taskTitle));
-            txtStartTime.setText(context.getString(R.string.home_start_time,task.startTime));
-            txtEndTime.setText(context.getString(R.string.home_ended_time,task.endedTime));
+            txtTitle.setText(context.getString(R.string.home_task_title, task.taskTitle));
+            txtStartTime.setText(context.getString(R.string.home_start_time, task.startTime));
+            txtEndTime.setText(context.getString(R.string.home_ended_time, task.endedTime));
         }
 
     }
